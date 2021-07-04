@@ -1,3 +1,23 @@
+## Running locally
+
+### Configure your local PostgreSQL database
+Create a `/server/.env` file and declare in it the variable `LOCAL_DATABASE_URL` containing the URL for your local psql database:
+
+```
+LOCAL_DATABASE_URL="postgresql://[username]:[password]@localhost:[port]/[database_name]"
+```
+
+### Run the server
+Start the server locally:
+```
+cd server
+npm run local
+```
+Ready to go!
+
+
+
+
 # vaccination-exercise
 
 THL has ordered us to create a vaccination database which contains information about vaccine orders and vaccinations.

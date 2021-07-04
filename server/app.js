@@ -3,8 +3,12 @@ const express = require("express")
 const cors = require("cors")
 const app = express()
 
-app.get("/", (req, res) => {
-  res.send("Hello world")
+const testService = require("./services/test")
+
+app.get("/", async (req, res) => {
+  const testRes = await testService.getTest()
+  console.log(testRes)
+  res.send(testRes)
 })
 
 module.exports = app
