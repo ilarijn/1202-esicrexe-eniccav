@@ -12,3 +12,4 @@ pom.xml.asc
 .hg/
 /.idea/
 /vaccination-exercise.iml
+**/node_modules
