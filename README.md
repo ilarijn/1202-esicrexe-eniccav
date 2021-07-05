@@ -1,7 +1,7 @@
-## Running locally
+## Running the app locally
 
 ### Configure your local PostgreSQL database
-Create a `/server/.env` file and declare in it the variable `LOCAL_DATABASE_URL` containing the URL for your local psql database:
+Create a `/server/.env` file and declare in it the variable `LOCAL_DATABASE_URL` containing the URL and username/password for your local psql database:
 
 ```
 LOCAL_DATABASE_URL="postgresql://[username]:[password]@localhost:[port]/[database_name]"

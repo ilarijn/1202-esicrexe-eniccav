@@ -7,7 +7,6 @@ const testService = require("./services/test")
 
 app.get("/", async (req, res) => {
   const testRes = await testService.getTest()
-  console.log(testRes)
   res.send(testRes)
 })
 

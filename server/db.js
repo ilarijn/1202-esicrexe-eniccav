@@ -29,14 +29,14 @@ const connect = async () => {
 
 connect()
 
-query = async (text, params) => {
+const query = async (text, params) => {
   try {
     if (!client) {
       await connect()
     }
     const result = await client.query(text, params)
     const results = result ? result.rows : null
-    console.log(results)
+    console.log("RESULTS: ", results)
     return results
   } catch (err) {
     console.error(err)
