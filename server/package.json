@@ -8,7 +8,7 @@
     "dev": "cross-env NODE_ENV=development nodemon index.js",
     "test": "cross-env NODE_ENV=test jest --verbose",
     "start:test": "cross-env NODE_ENV=test node index.js",
-    "local": "cross-env NODE_ENV=local nodemon index.js"
+    "local": "cross-env NODE_ENV=local nodemon -L index.js"
   },
   "author": "Ilari Junnonen",
   "dependencies": {
@@ -16,8 +16,11 @@
     "cors": "^2.8.5",
     "dotenv": "^9.0.2",
     "express": "^4.17.1",
+    "local": "^0.3.3",
+    "npm": "^7.19.1",
     "pg": "^8.6.0",
-    "pg-format": "^1.0.4"
+    "pg-format": "^1.0.4",
+    "run": "^1.4.0"
   },
   "devDependencies": {
     "cross-env": "^7.0.3",

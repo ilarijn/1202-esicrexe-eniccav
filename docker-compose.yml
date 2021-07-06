@@ -1,0 +1,30 @@
+version: "3"
+
+services:
+  db:
+    build: ./db
+    ports:
+      - "5432:5432"
+    container_name: postgres
+  server:
+    build: ./server
+    ports:
+      - "3003:3003"
+    volumes:
+      - ./server:/usr/src/app
+    depends_on:
+      - "db"
+    container_name: node
+    command: ["npm", "run", "local"]
+  client:
+    build: ./client
+    ports:
+      - "3000:3000"
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    volumes:
+      - ./client:/usr/src/app
+    depends_on:
+      - "server"
+    container_name: react
+    command: ["npm", "start"]
