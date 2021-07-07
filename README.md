@@ -1,22 +1,21 @@
-## Running the app locally
+## vaccine-exercise-2021
 
-### Configure your local PostgreSQL database
-Create a `/server/.env` file and declare in it the variable `LOCAL_DATABASE_URL` containing the URL and username/password for your local psql database:
-
-```
-LOCAL_DATABASE_URL="postgresql://[username]:[password]@localhost:[port]/[database_name]"
-```
-
-### Run the server
-Start the server locally:
-```
-cd server
-npm run local
-```
-Ready to go!
+A Node server, React client and PostgreSQL database for presenting information about vaccine orders and vaccinations.
 
 
+## Running the app
 
+The app is running on Heroku at http://vaccine-exercise-ilarijn.herokuapp.com/
+
+### Running locally
+
+Clone the repo and run `docker-compose up` at the root directory. There are separate containers for the database, server and client.
+
+### Known issues
+
+- Building the client container image sometimes fails during `npm install` with `npm ERR! cb() never called!`. This happens especially with a slow network connection and the solution in this case is to run `docker-compose up` again.
+
+- The amount of vaccines expired before use for the date "2021-04-12T11:10:06.473587Z" is 12572 instead of 13620. Issue or feature? :sweat_smile:
 
 # vaccination-exercise
 
@@ -80,10 +79,12 @@ The datastructure is
 ## Example vaccination
 
 ```json
-{"vaccination-id":"e28a0fb5-3956-4ba6-827f-4dcae64e4cda",
-"sourceBottle":"2b00bc58-3faf-4d06-bb11-ef47aad8086a",
-"gender":"nonbinary",
-"vaccinationDate":"2021-04-08T11:00:20.740994Z"}
+{
+  "vaccination-id": "e28a0fb5-3956-4ba6-827f-4dcae64e4cda",
+  "sourceBottle": "2b00bc58-3faf-4d06-bb11-ef47aad8086a",
+  "gender": "nonbinary",
+  "vaccinationDate": "2021-04-08T11:00:20.740994Z"
+}
 ```
 
 # The exercise
@@ -108,27 +109,27 @@ Some kind of database could be useful for aggregating the data. MySQL/Postgresql
 
 For given day like 2021-04-12T11:10:06
 
-* How many orders and vaccines have arrived total?
-* How many of the vaccinations have been used?
-* How many orders/vaccines per producer?
-* How many bottles have expired on the given day (remember a bottle expires 30 days after arrival)
-* How many vaccines expired before the usage -> remember to decrease used injections from the expired bottle
-* How many vaccines are left to use?
-* How many vaccines are going to expire in the next 10 days?
+- How many orders and vaccines have arrived total?
+- How many of the vaccinations have been used?
+- How many orders/vaccines per producer?
+- How many bottles have expired on the given day (remember a bottle expires 30 days after arrival)
+- How many vaccines expired before the usage -> remember to decrease used injections from the expired bottle
+- How many vaccines are left to use?
+- How many vaccines are going to expire in the next 10 days?
 
 Perhaps there is some other data which could tell us some interesting things?
 
 ## Some numbers to help you
 
-* Total number of orders 5000
-* Vaccinations done 7000
-* "2021-03-20" arrived 61 orders.
-* When counted from "2021-04-12T11:10:06.473587Z" 13620 vaccines expired before usage.
+- Total number of orders 5000
+- Vaccinations done 7000
+- "2021-03-20" arrived 61 orders.
+- When counted from "2021-04-12T11:10:06.473587Z" 13620 vaccines expired before usage.
 
 ## Some tips
 
-* You don't need to do all these for a good result.
-* You can make graphs from the data but textual representation suffice also.
-* Think about the tests for your application.
-* You can test the frontend also
-* Add README.md which have instructions how to build/run your software and how to run the tests.
+- You don't need to do all these for a good result.
+- You can make graphs from the data but textual representation suffice also.
+- Think about the tests for your application.
+- You can test the frontend also
+- Add README.md which have instructions how to build/run your software and how to run the tests.

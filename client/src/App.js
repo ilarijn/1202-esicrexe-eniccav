@@ -29,7 +29,11 @@ const App = () => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ date: date.toISOString(), categories }),
     }
-    const res = await fetch("http://localhost:3003/api", req)
+    const dbUrl =
+      process.env.NODE_ENV === "development"
+        ? "http://localhost:3003/api"
+        : "http://vaccine-exercise-ilarijn.herokuapp.com/api"
+    const res = await fetch(dbUrl, req)
     setReport(await res.json())
   }
 

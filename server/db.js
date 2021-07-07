@@ -36,10 +36,9 @@ const query = async (text, params) => {
     }
     const result = await client.query(text, params)
     const results = result ? result.rows : null
-    //console.log("RESULTS: ", results)
     return results
-  } catch (err) {
-    console.error(err)
+  } catch (e) {
+    console.error(e)
     throw err
   }
 }

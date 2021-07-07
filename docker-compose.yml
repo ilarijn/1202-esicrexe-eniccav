@@ -2,11 +2,13 @@ version: "3"
 
 services:
   db:
+    image: ilarijn/vaccines-db
     build: ./db
     ports:
       - "5432:5432"
     container_name: postgres
   server:
+    image: ilarijn/vaccines-server
     build: ./server
     ports:
       - "3003:3003"
@@ -17,6 +19,7 @@ services:
     container_name: node
     command: ["npm", "run", "local"]
   client:
+    image: ilarijn/vaccines-client
     build: ./client
     ports:
       - "3000:3000"
