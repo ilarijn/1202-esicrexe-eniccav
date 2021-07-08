@@ -5,10 +5,10 @@ const connectionString = (() => {
   switch (process.env.NODE_ENV) {
     case "production":
       return process.env.DATABASE_URL
+    case "development":
+      return process.env.LOCAL_DATABASE_URL
     case "test":
       return process.env.TEST_DATABASE_URL
-    case "local":
-      return process.env.LOCAL_DATABASE_URL
   }
 })()
 
@@ -21,26 +21,14 @@ const pool = new pg.Pool({
     : false,
 })
 
-let client
-
-const connect = async () => {
-  client = await pool.connect()
-}
-
-connect()
-
-const query = async (text, params) => {
+const query = async (sql, params) => {
+  let result
   try {
-    if (!client) {
-      await connect()
-    }
-    const result = await client.query(text, params)
-    const results = result ? result.rows : null
-    return results
+    result = await pool.query(sql, params)
   } catch (e) {
     console.error(e)
-    throw err
   }
+  return result ? result.rows : {}
 }
 
 module.exports = { query }

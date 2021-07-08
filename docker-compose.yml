@@ -7,6 +7,11 @@ services:
     ports:
       - "5432:5432"
     container_name: postgres
+  db_test:
+    build: ./db/test
+    ports:
+      - "5430:5432"
+    container_name: postgres_test
   server:
     image: ilarijn/vaccines-server
     build: ./server
@@ -17,7 +22,7 @@ services:
     depends_on:
       - "db"
     container_name: node
-    command: ["npm", "run", "local"]
+    command: ["npm", "run", "dev"]
   client:
     image: ilarijn/vaccines-client
     build: ./client

@@ -1,7 +1,6 @@
 ## vaccine-exercise-2021
 
-A Node server, React client and PostgreSQL database for presenting information about vaccine orders and vaccinations.
-
+A Node server, responsive React client and PostgreSQL database for presenting information about vaccine orders and vaccinations.
 
 ## Running the app
 
@@ -9,13 +8,13 @@ The app is running on Heroku at http://vaccine-exercise-ilarijn.herokuapp.com/
 
 ### Running locally
 
-Clone the repo and run `docker-compose up` at the root directory. There are separate containers for the database, server and client.
+Clone the repo and run `docker-compose up` at the root directory. There are separate containers for the database, server and client. When all containers are up, navigate to `http://localhost:3000`
 
 ### Known issues
 
 - Building the client container image sometimes fails during `npm install` with `npm ERR! cb() never called!`. This happens especially with a slow network connection and the solution in this case is to run `docker-compose up` again.
 
-- The amount of vaccines expired before use for the date "2021-04-12T11:10:06.473587Z" is 12572 instead of 13620. Issue or feature? :sweat_smile:
+- The amount by the query for vaccines expired before use on the date "2021-04-12T11:10:06.473587Z" is 12572 instead of 13620 with the provided data. Issue or feature? :sweat_smile:
 
 # vaccination-exercise
 

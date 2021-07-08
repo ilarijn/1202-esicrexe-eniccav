@@ -1,0 +1,50 @@
+[
+  {
+    "vaccination-id": "68ffc9c4-1778-42ef-8740-0557ce1d367a",
+    "sourceBottle": "6442a01d-9897-4e30-bbb1-a4d123612d5e",
+    "gender": "male",
+    "vaccinationDate": "2021-03-06T04:04:04.643654Z"
+  },
+  {
+    "vaccination-id": "7a20f3b1-f9ed-4f24-a70a-618feadae08d",
+    "sourceBottle": "2b923c88-a3b7-4b00-a71e-01ddebbc23f5",
+    "gender": "female",
+    "vaccinationDate": "2021-03-22T19:38:00.959337Z"
+  },
+  {
+    "vaccination-id": "a088bda9-25fa-4238-ab88-592283d8b012",
+    "sourceBottle": "2b923c88-a3b7-4b00-a71e-01ddebbc23f5",
+    "gender": "male",
+    "vaccinationDate": "2021-03-17T09:55:54.621651Z"
+  },
+  {
+    "vaccination-id": "0536ef67-327e-46f8-9552-42158867abad",
+    "sourceBottle": "641293dc-276d-42cd-a2d8-cf4050f657e5",
+    "gender": "female",
+    "vaccinationDate": "2021-03-19T00:48:22.833647Z"
+  },
+  {
+    "vaccination-id": "8048f639-5ed8-4417-9e3b-9dd47bc97cc4",
+    "sourceBottle": "6f4dac20-374e-42d5-9403-f4e0c8e7bedb",
+    "gender": "female",
+    "vaccinationDate": "2021-03-31T20:54:54.643049Z"
+  },
+  {
+    "vaccination-id": "804456f639-3218-4417-9e3b-9d321bc97cc4",
+    "sourceBottle": "6f4dac20-374e-42d5-9403-f4e0c8e7bedb",
+    "gender": "female",
+    "vaccinationDate": "2021-03-20T20:54:54.643049Z"
+  },
+  {
+    "vaccination-id": "3218f639-13218-4417-9e3b-9dd47bc97cc4",
+    "sourceBottle": "6f4dac20-374e-42d5-9403-f4e0c8e7bedb",
+    "gender": "female",
+    "vaccinationDate": "2021-03-14T20:54:54.643049Z"
+  },
+  {
+    "vaccination-id": "1238f639-1238-1237-123b-123d47bc97cc4",
+    "sourceBottle": "6f4dac20-374e-42d5-9403-f4e0c8e7bedb",
+    "gender": "female",
+    "vaccinationDate": "2021-03-07T20:54:54.643049Z"
+  }
+]
