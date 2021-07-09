@@ -6,7 +6,7 @@ import Col from "react-bootstrap/Col"
 import Navbar from "react-bootstrap/Navbar"
 import Row from "react-bootstrap/Row"
 import Spinner from "react-bootstrap/Spinner"
-import CheckCategory from "./CheckCategory"
+import ReportCategories from "./ReportCategories"
 import StatCard from "./StatCard"
 
 const App = () => {
@@ -14,11 +14,14 @@ const App = () => {
   const [categories, setCategories] = useState({
     totals: true,
     producers: false,
-    expiration: false,
     usage: false,
+    expiration: false,
   })
   const [report, setReport] = useState({})
   const [loading, setLoading] = useState(false)
+
+  const testDate = new Date("2021-04-12T11:10:06.473587Z")
+  console.log(testDate.getUTCFullYear())
 
   const getReport = async () => {
     console.log(date.toISOString())
@@ -52,34 +55,7 @@ const App = () => {
             <DateTimePicker id="calendar" onChange={setDate} value={date} />
           </Col>
         </Row>
-        <Row className="justify-content-center mb-2">
-          <CheckCategory
-            label="Arrived totals"
-            id="totals"
-            handleChange={handleCategorySelect}
-            checked={categories.totals}
-          />
-          <CheckCategory
-            label="Arrived per producer"
-            id="producers"
-            handleChange={handleCategorySelect}
-            checked={categories.producers}
-          />
-        </Row>
-        <Row className="justify-content-center mb-2">
-          <CheckCategory
-            label="Usage"
-            id="usage"
-            handleChange={handleCategorySelect}
-            checked={categories.usage}
-          />
-          <CheckCategory
-            label="Expiration"
-            id="expiration"
-            handleChange={handleCategorySelect}
-            checked={categories.expiration}
-          />
-        </Row>
+        <ReportCategories handleChange={handleCategorySelect} categories={categories} />
         <Row className="justify-content-center">
           <Col md="auto" xs="auto">
             <Button variant="primary" block size="md" id="getReport" onClick={getReport}>

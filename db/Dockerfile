@@ -8,8 +8,8 @@ RUN echo 'alias login="psql vaccines -h localhost -p 5432 -U docker -W"' >> ~/.b
 
 COPY initdb.sql /docker-entrypoint-initdb.d/ 
 COPY ./resources/* /resources/
-COPY parseToJson.sh /resources/
+COPY sourceToArray.sh /resources/
 
 WORKDIR /resources
-RUN ./parseToJson.sh
+RUN ./sourceToArray.sh
 RUN chmod a+rwx *.json
