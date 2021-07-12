@@ -20,11 +20,7 @@ const App = () => {
   const [report, setReport] = useState({})
   const [loading, setLoading] = useState(false)
 
-  const testDate = new Date("2021-04-12T11:10:06.473587Z")
-  console.log(testDate.getUTCFullYear())
-
   const getReport = async () => {
-    console.log(date.toISOString())
     const req = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -47,7 +43,7 @@ const App = () => {
   return (
     <>
       <Navbar bg="light">
-        <Navbar.Brand>vaccine-exercise-2021</Navbar.Brand>
+        <Navbar.Brand>1202-esicrexe-eniccav</Navbar.Brand>
       </Navbar>
       <Container fluid="md" style={{ paddingBottom: 50 }}>
         <Row className="justify-content-center mt-5 mb-2">

@@ -31,4 +31,4 @@ const query = async (sql, params) => {
   return result ? result.rows : {}
 }
 
-module.exports = { query }
+module.exports = { query, pool }

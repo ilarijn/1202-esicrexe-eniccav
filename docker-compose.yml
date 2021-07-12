@@ -7,11 +7,6 @@ services:
     ports:
       - "5432:5432"
     container_name: postgres
-  db_test:
-    build: ./db/test
-    ports:
-      - "5430:5432"
-    container_name: postgres_test
   server:
     image: ilarijn/vaccines-server
     build: ./server

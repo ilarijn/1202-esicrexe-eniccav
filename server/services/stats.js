@@ -73,7 +73,7 @@ const bottlesExpiredOnDate = async (timestamp) => {
 
 const vaccinesExpiredBeforeUsage = async (timestamp) => {
   const result = await db.query(
-    'SELECT SUM(vaccines_left_on_date) as result FROM (SELECT id, (injections - used) AS vaccines_left_on_date, arrived FROM (SELECT orders.id, COUNT(vaccinations."sourceBottle") as used, orders.injections, orders.arrived FROM orders LEFT JOIN vaccinations ON orders.id = vaccinations."sourceBottle" WHERE arrived < $1 GROUP BY orders.id) AS usage WHERE arrived <= ($1::TIMESTAMP - interval \'30\' day)) AS results',
+    'SELECT SUM(vaccines_left_on_date) as result FROM (SELECT id, (injections - used) AS vaccines_left_on_date, arrived FROM (SELECT orders.id, COUNT(vaccinations."sourceBottle") as used, orders.injections, orders.arrived FROM orders LEFT JOIN vaccinations ON orders.id = vaccinations."sourceBottle" AND vaccinations."vaccinationDate" <= $1 WHERE arrived < $1 GROUP BY orders.id) AS usage WHERE arrived <= ($1::TIMESTAMP - interval \'30\' day)) AS results',
     [timestamp]
   )
   return { ...result[0], description: "Total vaccines expired before use" }
@@ -81,7 +81,7 @@ const vaccinesExpiredBeforeUsage = async (timestamp) => {
 
 const vaccinesExpireInNextTenDays = async (timestamp) => {
   const result = await db.query(
-    "SELECT SUM(vaccines_left) AS result FROM (SELECT id, (injections - used) AS vaccines_left, arrived FROM (SELECT orders.id, COUNT(vaccinations.\"sourceBottle\") AS used, orders.injections, orders.arrived FROM orders LEFT JOIN vaccinations ON orders.id = vaccinations.\"sourceBottle\" WHERE arrived < $1 AND (arrived > ($1::DATE - interval '29 day') AND arrived <= ($1::DATE - interval '19 day')) GROUP BY orders.id) AS usage) AS results",
+    "SELECT SUM(vaccines_left) AS result FROM (SELECT id, (injections - used) AS vaccines_left, arrived FROM (SELECT orders.id, COUNT(vaccinations.\"sourceBottle\") AS used, orders.injections, orders.arrived FROM orders LEFT JOIN vaccinations ON orders.id = vaccinations.\"sourceBottle\" AND vaccinations.\"vaccinationDate\" <= $1 WHERE arrived < $1 AND (arrived > ($1::DATE - interval '29 day') AND arrived <= ($1::DATE - interval '19 day')) GROUP BY orders.id) AS usage) AS results",
     [timestamp]
   )
   return { ...result[0], description: "Vaccines expire in the next 10 days" }
@@ -97,10 +97,10 @@ const vaccinesUsedOnDate = async (timestamp) => {
 
 const totalVaccinesLeft = async (timestamp) => {
   const result = await db.query(
-    'SELECT SUM(vaccines_left) as RESULT FROM (SELECT id, (injections - used) AS vaccines_left, arrived FROM (SELECT orders.id, COUNT(vaccinations."sourceBottle") as used, orders.injections, orders.arrived FROM orders LEFT JOIN vaccinations ON orders.id = vaccinations."sourceBottle" WHERE arrived < $1 AND arrived > ($1::DATE - interval \'30 day\') GROUP BY orders.id) AS usage) AS results',
+    'SELECT SUM(vaccines_left) as RESULT FROM (SELECT id, (injections - used) AS vaccines_left, arrived FROM (SELECT orders.id, COUNT(vaccinations."sourceBottle") as used, orders.injections, orders.arrived FROM orders LEFT JOIN vaccinations ON orders.id = vaccinations."sourceBottle" AND vaccinations."vaccinationDate" <= $1 WHERE arrived < $1 AND arrived > ($1::DATE - interval \'30 day\') GROUP BY orders.id) AS usage) AS results',
     [timestamp]
   )
   return { ...result[0], description: "Total unexpired vaccines left" }
 }
 
-module.exports = { getReport }
+module.exports = { getReport, vaccinesExpiredBeforeUsage, totalVaccinesLeft, vaccinesUsedOnDate, vaccinesExpireInNextTenDays }

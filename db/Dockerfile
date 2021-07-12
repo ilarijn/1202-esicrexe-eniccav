@@ -13,3 +13,4 @@ COPY sourceToArray.sh /resources/
 WORKDIR /resources
 RUN ./sourceToArray.sh
 RUN chmod a+rwx *.json
+

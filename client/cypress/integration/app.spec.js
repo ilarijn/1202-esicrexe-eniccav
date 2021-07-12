@@ -6,7 +6,7 @@ describe("App", function () {
   })
 
   it("opens normally", function () {
-    cy.contains("vaccine-exercise-2021")
+    cy.contains("1202-esicrexe-eniccav")
     cy.contains("Arrived")
     cy.contains("Usage")
     cy.contains("Expiration")
@@ -34,7 +34,7 @@ describe("App", function () {
     cy.contains("300")
   })
 
-  it("receives all reports", function () {
+  it("receives all reports when selected", function () {
     cy.get(
       '[class="react-datetime-picker__inputGroup__input react-datetime-picker__inputGroup__day"]'
     ).type(testDate.getUTCDate())
