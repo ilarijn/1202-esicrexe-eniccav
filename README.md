@@ -10,7 +10,16 @@ The app is running on Heroku at http://vaccine-exercise-ilarijn.herokuapp.com/
 
 ### Running locally
 
-Clone the repo and run `docker-compose up` at the root directory. There are separate containers for the database, server and client. When all containers are up, navigate to `http://localhost:3000`
+Clone the repo and run
+```
+cd client
+npm install
+cd ../server
+npm install
+```
+After installing, run `docker-compose up` at the root directory. There are separate containers for the database, server and client. When all containers are up, navigate to `http://localhost:3000`
+
+***NOTE:*** cloning the repo on Windows might produce `file not found` errors when building Docker images due to CRLF newlines in Dockerfiles. Either clone on Linux or make sure all Dockerfile line endings are LF.
 
 ### Running the tests
 
